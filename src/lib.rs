@@ -129,11 +129,21 @@ mod tests {
         assert!(f128::MIN.is_finite());
 
         assert!(f128::MIN_POSITIVE.is_finite());
+        assert!(f128::MIN_POSITIVE.is_normal());
+        assert!(!f128::MIN_POSITIVE.is_subnormal());
         assert!(!f128::MIN_POSITIVE.is_nan());
 
-        assert!(f128::MIN_POSITIVE.is_finite());
-        assert!(!f128::MIN_POSITIVE.is_nan());
+        assert!(f128::MIN_POSITIVE_SUBNORMAL.is_finite());
+        assert!(!f128::MIN_POSITIVE_SUBNORMAL.is_normal());
+        assert!(f128::MIN_POSITIVE_SUBNORMAL.is_subnormal());
+        assert!(!f128::MIN_POSITIVE_SUBNORMAL.is_nan());
 
+        // assert!(!f128::ZERO.is_normal()); // fails
+        assert!(!f128::ZERO.is_subnormal());
+        assert!(!f128::ZERO.is_infinite());
+        assert!(!f128::ZERO.is_nan());
+        assert!(f128::ZERO.is_finite());
+        assert!(f128::ZERO.is_zero());
     }
 
     #[test]
